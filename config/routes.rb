@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
+  resources :products
+  resources :product_types
+  resources :product_types
   devise_for :users
+  devise_for :admins
+  devise_for :brokers
+  devise_for :builders
+  devise_for :customers
+
   root to: "home#index"
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.
