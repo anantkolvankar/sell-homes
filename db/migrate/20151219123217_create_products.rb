@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :area
       t.text :address
       t.references :user, index: true, foreign_key: true
-      t.references :productType, index: true, foreign_key: true
+      t.references :product_type, index: true, foreign_key: true
 
       t.timestamps null: false
     end

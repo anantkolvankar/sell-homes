@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20151219123217) do
     t.string   "area"
     t.text     "address"
     t.integer  "user_id"
-    t.integer  "productType_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "product_type_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "products", ["productType_id"], name: "index_products_on_productType_id"
+  add_index "products", ["product_type_id"], name: "index_products_on_product_type_id"
   add_index "products", ["user_id"], name: "index_products_on_user_id"
 
   create_table "users", force: :cascade do |t|
