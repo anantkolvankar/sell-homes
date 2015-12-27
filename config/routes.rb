@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :floorings
+  resources :amenities
   resources :products
   resources :product_types
   resources :product_types

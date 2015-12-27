@@ -39,10 +39,18 @@
   <strong>User:</strong>
   <%= @product.user %>
 </p>
+<strong>Amenities:</strong>
+  <% @product.amenities.each do |g| %>
+  <ul>
+  <li><%= g.name %></li>
+  </ul>
+  <% end %>
+<p>
 
+</p>
 <p>
   <strong>Producttype:</strong>
-  <%= @product.product_type.name %>
+  <%#= @product.product_type.name %>
 </p>
 <% if current_admin %>
 <%= link_to 'Edit', edit_product_path(@product) %>
