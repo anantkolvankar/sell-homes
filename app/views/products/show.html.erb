@@ -49,8 +49,13 @@
 
 </p>
 <p>
-  <strong>Producttype:</strong>
-  <%#= @product.product_type.name %>
+  <strong>Product Images:</strong>
+  <% @product.product_images.each do |g| %>
+  <ul>
+  <li><%= g.title %></li>
+  <%=image_tag g.photo.url, height: '160',width: '120' %>
+  </ul>
+  <% end %>
 </p>
 <% if current_admin %>
 <%= link_to 'Edit', edit_product_path(@product) %>

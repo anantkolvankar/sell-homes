@@ -7,5 +7,5 @@ class Product < ActiveRecord::Base
   has_many :amenity_properties
   has_many :amenities, through: :amenity_properties
 
-
+   accepts_nested_attributes_for :product_images
 end

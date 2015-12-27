@@ -1,3 +1,4 @@
 class ProductImage < ActiveRecord::Base
-  belong_to :product
+  belongs_to :product
+  mount_uploader :photo, AvatarUploader
 end

@@ -56,6 +56,25 @@
 </div>
 <% end %>
 
+ <h2>property images </h2>
+
+ <%= f.fields_for :product_images do |productimage| %>
+
+   <div class="room_category_fields">
+
+     <div class="field">
+
+       <%= productimage.label :name %><br>
+
+       <%= productimage.text_field :title %>
+
+        <%= productimage.file_field :photo %>
+     </div>
+
+   </div>
+
+ <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
