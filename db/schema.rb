@@ -11,16 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219123217) do
+ActiveRecord::Schema.define(version: 20151226115103) do
 
-  create_table "product_types", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "amenity_properties", force: :cascade do |t|
+    t.integer  "amenity_id"
+    t.integer  "property_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "floorings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "properties", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "price"
@@ -29,13 +44,28 @@ ActiveRecord::Schema.define(version: 20151219123217) do
     t.string   "area"
     t.text     "address"
     t.integer  "user_id"
-    t.integer  "product_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "property_type_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "products", ["product_type_id"], name: "index_products_on_product_type_id"
-  add_index "products", ["user_id"], name: "index_products_on_user_id"
+  add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree
+  add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
+
+  create_table "property_images", force: :cascade do |t|
+    t.string   "photo"
+    t.string   "title"
+    t.integer  "property_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,9 +81,12 @@ ActiveRecord::Schema.define(version: 20151219123217) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "type"
+    t.string   "first_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "properties", "property_types"
+  add_foreign_key "properties", "users"
 end

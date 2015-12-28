@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   
   resources :floorings
   resources :amenities
-  resources :products
-  resources :product_types
-  resources :product_types
+  resources :properties
+  resources :property_types
   devise_for :users
   devise_for :admins
   devise_for :brokers
@@ -20,16 +19,16 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #   get 'propertys/:id' => 'catalog#view'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # Example of named route that can be invoked with purchase_url(id: property.id)
+  #   get 'propertys/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  #   resources :propertys
 
   # Example resource route with options:
-  #   resources :products do
+  #   resources :propertys do
   #     member do
   #       get 'short'
   #       post 'toggle'
@@ -41,13 +40,13 @@ Rails.application.routes.draw do
   #   end
 
   # Example resource route with sub-resources:
-  #   resources :products do
+  #   resources :propertys do
   #     resources :comments, :sales
   #     resource :seller
   #   end
 
   # Example resource route with more complex sub-resources:
-  #   resources :products do
+  #   resources :propertys do
   #     resources :comments
   #     resources :sales do
   #       get 'recent', on: :collection
@@ -63,8 +62,8 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
+  #     # Directs /admin/propertys/* to Admin::PropertysController
+  #     # (app/controllers/admin/propertys_controller.rb)
+  #     resources :propertys
   #   end
 end

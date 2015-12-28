@@ -1,6 +1,6 @@
-class CreateProducts < ActiveRecord::Migration
+class CreateProperties < ActiveRecord::Migration
   def change
-    create_table :products do |t|
+    create_table :properties do |t|
       t.string :title
       t.text :description
       t.integer :price
@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :area
       t.text :address
       t.references :user, index: true, foreign_key: true
-      t.references :product_type, index: true, foreign_key: true
+      t.references :property_type, index: true, foreign_key: true
 
       t.timestamps null: false
     end

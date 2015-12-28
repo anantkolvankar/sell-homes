@@ -1,10 +1,10 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
+<%= form_for(@property) do |f| %>
+  <% if @property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this property from being saved:</h2>
 
       <ul>
-      <% @product.errors.full_messages.each do |message| %>
+      <% @property.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -44,31 +44,31 @@
     <%= f.text_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :product_type_id %><br>
-    <%= f.text_field :product_type_id %>
+    <%= f.label :property_type_id %><br>
+    <%= f.text_field :property_type_id %>
 
   </div>
   Select Amenities for property
 <% for amenity in Amenity.all %>
 <div>
-<%= check_box_tag "product[amenity_ids][]", amenity.id, @amenity.try(:include?, amenity.id) %>
+<%= check_box_tag "property[amenity_ids][]", amenity.id, @amenity.try(:include?, amenity.id) %>
 <%= amenity.name %>
 </div>
 <% end %>
 
  <h2>property images </h2>
 
- <%= f.fields_for :product_images do |productimage| %>
+ <%= f.fields_for :property_images do |propertyimage| %>
 
    <div class="room_category_fields">
 
      <div class="field">
 
-       <%= productimage.label :name %><br>
+       <%= propertyimage.label :name %><br>
 
-       <%= productimage.text_field :title %>
+       <%= propertyimage.text_field :title %>
 
-        <%= productimage.file_field :photo %>
+        <%= propertyimage.file_field :photo %>
      </div>
 
    </div>

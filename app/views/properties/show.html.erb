@@ -2,45 +2,45 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @product.title %>
+  <%= @property.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description %>
+  <%= @property.description %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @product.price %>
+  <%= @property.price %>
 </p>
 
 <p>
   <strong>Pincode:</strong>
-  <%= @product.pincode %>
+  <%= @property.pincode %>
 </p>
 
 <p>
   <strong>Region:</strong>
-  <%= @product.region %>
+  <%= @property.region %>
 </p>
 
 <p>
   <strong>Area:</strong>
-  <%= @product.area %>
+  <%= @property.area %>
 </p>
 
 <p>
   <strong>Address:</strong>
-  <%= @product.address %>
+  <%= @property.address %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @product.user %>
+  <%= @property.user %>
 </p>
 <strong>Amenities:</strong>
-  <% @product.amenities.each do |g| %>
+  <% @property.amenities.each do |g| %>
   <ul>
   <li><%= g.name %></li>
   </ul>
@@ -49,8 +49,8 @@
 
 </p>
 <p>
-  <strong>Product Images:</strong>
-  <% @product.product_images.each do |g| %>
+  <strong>Property Images:</strong>
+  <% @property.property_images.each do |g| %>
   <ul>
   <li><%= g.title %></li>
   <%=image_tag g.photo.url, height: '160',width: '120' %>
@@ -58,6 +58,6 @@
   <% end %>
 </p>
 <% if current_admin %>
-<%= link_to 'Edit', edit_product_path(@product) %>
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_property_path(@property) %>
+<%= link_to 'Back', properties_path %>
 <% end %>
