@@ -10,42 +10,41 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :pincode %><br>
-    <%= f.number_field :pincode %>
+    <%= f.text_field :pincode, class: 'form-control',id:'postal_code' %>
   </div>
   <div class="field">
     <%= f.label :region %><br>
-    <%= f.text_field :region %>
+    <%= f.text_field :region, class: 'form-control', id: 'autocomplete', onFocus: "geolocate()" %>
   </div>
   <div class="field">
     <%= f.label :area %><br>
-    <%= f.text_field :area %>
+    <%= f.text_field :area, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :address %><br>
-    <%= f.text_area :address %>
+    <%= f.text_area :address, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.text_field :user_id, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :property_type_id %><br>
-    <%= f.text_field :property_type_id %>
+    <%= f.text_field :property_type_id, class: 'form-control' %>
 
   </div>
   Select Amenities for property
