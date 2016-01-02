@@ -7,6 +7,9 @@ class Property < ActiveRecord::Base
   has_many :amenity_properties
   has_many :amenities, through: :amenity_properties
 
+  has_many :flooring_properties
+  has_many :flooring, through: :flooring_properties
+
   accepts_nested_attributes_for :property_images
   
   geocoded_by :full_street_address   # can also be an IP address

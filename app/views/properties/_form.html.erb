@@ -47,11 +47,19 @@
     <%= f.text_field :property_type_id, class: 'form-control' %>
 
   </div>
-  Select Amenities for property
+  <h3>Select Amenities for property</h3>
 <% for amenity in Amenity.all %>
 <div>
 <%= check_box_tag "property[amenity_ids][]", amenity.id, @amenity.try(:include?, amenity.id) %>
 <%= amenity.name %>
+</div>
+<% end %>
+
+<h3>Select Flooring for property</h3>
+<% for flooring in Flooring.all %>
+<div>
+<%= check_box_tag "property[flooring_ids][]", flooring.id, @flooring.try(:include?, flooring.id) %>
+<%= flooring.name %>
 </div>
 <% end %>
 
