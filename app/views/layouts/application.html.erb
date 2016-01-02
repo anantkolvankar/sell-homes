@@ -12,7 +12,7 @@
 	<% if !current_person %>
 	 	<%= menu_group pull: :right do %>
 	        
-	            <%= menu_item "Customer Log in",  new_customer_session_path %>
+	            <%= menu_item "Agent Log in",  new_agent_session_path %>
 	            <%= menu_item "Admin Log in",  new_admin_session_path %>
 
 	    	        
@@ -37,6 +37,13 @@
 	    <%= menu_group pull: :right do %>
 	        
 	            <%= menu_item "Broker Log Out",  destroy_broker_session_path, :method => :delete %>
+	        
+	    <% end %>
+   <% end %>
+   <% if current_agent %>
+	    <%= menu_group pull: :right do %>
+	        	<%= menu_item "Agent edit",  edit_agent_registration_path %>
+	            <%= menu_item "Agent Log Out",  destroy_agent_session_path, :method => :delete %>
 	        
 	    <% end %>
    <% end %>

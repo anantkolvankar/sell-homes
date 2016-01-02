@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :agents
   resources :floorings
   resources :amenities
   resources :properties
