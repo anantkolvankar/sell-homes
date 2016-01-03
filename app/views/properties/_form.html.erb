@@ -63,15 +63,40 @@
 </div>
 <% end %>
 
- <h2>property images </h2>
-  <div id="property_image">
-    <%= f.fields_for :property_images do |task| %>
-      <%= render 'property_images_fields', f: task %>
-        <div class="links">
-          <%=  link_to_add_association 'add images', f, :property_images, partial: 'property_images_fields' %>
+<h2>property images </h2>
+<div class="panel panel-default" style="width: 500px; padding: 10px; margin: 10px">
+    <div id="Tabs" role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#exterior" aria-controls="exterior" role="tab" data-toggle="tab">
+                Exterior View </a></li>
+            <li><a href="#livingroom" aria-controls="livingroom" role="tab" data-toggle="tab">Living Room </a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content" style="padding-top: 20px">
+            <div role="tabpanel" class="tab-pane active" id="exterior">
+            <div id="property_image">
+              <%= f.fields_for :property_images do |task| %>
+                <%= render 'property_images_fields',f: task, locals: {title: "exterior"} %>
+                  <div class="links">
+                    <%=  link_to_add_association 'add images', f, :property_images, partial: 'property_images_fields' %>
+                  </div>
+              <% end %>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="livingroom">
+              <div id="property_image">
+                <%= f.fields_for :property_images do |task| %>
+                  <%= render 'property_images_fields', f: task %>
+                    <div class="links">
+                      <%=  link_to_add_association 'add images', f, :property_images, partial: 'property_images_fields' %>
+                    </div>
+                <% end %>
+                </div>
+            </div>
         </div>
-    <% end %>
-  </div>
+    </div>
+</div>
 
  <%#= f.fields_for :property_images do |propertyimage| %>
 <!--
