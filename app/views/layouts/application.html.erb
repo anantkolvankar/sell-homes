@@ -12,9 +12,7 @@
 	<% if !current_person %>
 	 	<%= menu_group pull: :right do %>
 	        
-	            <%= menu_item "Agent Log in",  new_agent_session_path %>
-	            <%= menu_item "Admin Log in",  new_admin_session_path %>
-
+	            <%= menu_item "Register",  home_register_as_path %>
 	    	        
 	    <% end %>
 	<% end %>
