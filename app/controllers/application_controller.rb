@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:first_name, :email, :password, :password_confirmation,:company )
+      u.permit(:first_name, :email, :password, :password_confirmation,:company,agent_info_attributes: [:company,:title] )
     end  
      devise_parameter_sanitizer.for(:account_update) << [agent_info_attributes: [:company,:title]]
   end
