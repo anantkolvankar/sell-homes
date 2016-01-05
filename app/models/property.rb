@@ -12,6 +12,30 @@ class Property < ActiveRecord::Base
 
   accepts_nested_attributes_for :property_images
   
-  #geocoded_by :full_street_address   # can also be an IP address
-  after_validation :geocode    
+  belongs_to :location
+
+  attr_accessor :location_name
+  #callback
+  #before_create :add_location_to_property
+
+  def add_location_to_property
+    if location_name.present?
+      location = location_name.split(',')
+      size = location.length
+      end_index = size - 3
+      # Append location data into user location hash
+      binding.pry
+      user_location = {
+
+        street_address: location[0..end_index].join(','),
+        city: location[size - 3],
+        state: location[size - 2],
+        country: location[size - 1]
+      }
+      # Update user with location_id
+      self.location = Location.create(user_location)
+      save
+    end
+  end
+ 
 end

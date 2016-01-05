@@ -29,6 +29,7 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
 
     respond_to do |format|
+      @property.add_location_to_property
       if @property.save
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
@@ -71,6 +72,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:title, :description, :price, :pincode, :region, :area, :address, :user_id, :property_type_id,amenity_ids: [],flooring_ids:[] ,property_images_attributes: [:id , :photo, :title,:_destroy])
+      params.require(:property).permit(:title,:location_name, :description, :price, :pincode, :region, :area, :address, :user_id, :property_type_id,amenity_ids: [],flooring_ids:[] ,property_images_attributes: [:id , :photo, :title,:_destroy])
     end
 end

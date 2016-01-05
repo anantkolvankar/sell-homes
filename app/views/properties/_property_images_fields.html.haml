@@ -1,0 +1,22 @@
+.nested-fields
+  = f.label :name 
+  -# f.hidden_field :title, value: locals[:title]
+  = f.file_field :photo
+  = link_to_remove_association "remove image", f 
+
+/    <%= f.fields_for :property_images do |propertyimage| %>
+
+/   <div class="room_category_fields">
+
+/     <div class="field">
+
+/       <%= propertyimage.label :name %><br>
+
+/       <%= propertyimage.text_field :title %>
+
+/        <%= propertyimage.file_field :photo %>
+/     </div>
+
+/   </div>
+
+/ <% end %>

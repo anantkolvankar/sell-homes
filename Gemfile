@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'haml'
 
+gem 'geocoder'
+gem 'therubyracer'
 # Nested forms are forms that handle nested models and attributes in one form
 gem "cocoon"
 # Use jquery as the JavaScript library

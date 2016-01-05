@@ -26,10 +26,15 @@
     <%= f.label :pincode %><br>
     <%= f.text_field :pincode, class: 'form-control',id:'postal_code' %>
   </div>
-  <div class="field">
-    <%= f.label :region %><br>
-    <%= f.text_field :region, class: 'form-control', id: 'autocomplete', onFocus: "geolocate()" %>
-  </div>
+   <%= f.label :Location %><br>
+ <div id="locationField">
+            <%= f.text_field :location_name, placeholder: 'Location', class: 'form-control', id: 'autocomplete', onFocus: "geolocate()", input_html: {value: f.object.try(:location).try(:address)}  %>
+          </div>
+
+ <!--  <div class="field">
+    <%#= f.label :region %><br>
+    <%#= f.text_field :region, class: 'form-control', id: 'autocomplete', onFocus: "geolocate()" %>
+  </div> -->
   <div class="field">
     <%= f.label :area %><br>
     <%= f.text_field :area, class: 'form-control' %>
