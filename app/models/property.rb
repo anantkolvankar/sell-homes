@@ -24,7 +24,6 @@ class Property < ActiveRecord::Base
       size = location.length
       end_index = size - 3
       # Append location data into user location hash
-      binding.pry
       user_location = {
 
         street_address: location[0..end_index].join(','),
