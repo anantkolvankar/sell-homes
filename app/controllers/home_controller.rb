@@ -5,4 +5,7 @@ class HomeController < ApplicationController
   end
   def register_as
   end
+
+  def login_as
+  end
 end

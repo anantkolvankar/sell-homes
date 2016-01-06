@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :agents
   resources :floorings
   resources :amenities
@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "home/index"
   get "home/register_as"
-
+  get "home/login_as"
+  get "agents/my_properties"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

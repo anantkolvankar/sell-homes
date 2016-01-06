@@ -1,11 +1,11 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!,except:[:show]
+  #before_action :authenticate_admin!,except:[:show]
 
   # GET /propertys
   # GET /propertys.json
   def index
-    @properties = Property.all
+    @properties =  (current_person== current_admin)? Property.all : Property.where(user:current_person)
   end
 
   # GET /propertys/1
@@ -27,7 +27,7 @@ class PropertiesController < ApplicationController
   # POST /propertys.json
   def create
     @property = Property.new(property_params)
-
+    @property.user=current_person
     respond_to do |format|
       @property.add_location_to_property
       if @property.save
@@ -43,14 +43,20 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /propertys/1
   # PATCH/PUT /propertys/1.json
   def update
-    respond_to do |format|
-      if @property.update(property_params)
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
-        format.json { render :show, status: :ok, location: @property }
-      else
-        format.html { render :edit }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
-      end
+      respond_to do |format|
+        if(@property.user == current_person || current_person== current_admin)
+
+        if @property.update(property_params)
+          format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+          format.json { render :show, status: :ok, location: @property }
+        else
+          format.html { render :edit }
+          format.json { render json: @property.errors, status: :unprocessable_entity }
+        end
+
+        else
+            format.html { redirect_to @property, alert: 'Please update your property only.'  }
+        end
     end
   end
 
