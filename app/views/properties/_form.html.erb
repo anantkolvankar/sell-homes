@@ -78,7 +78,7 @@
             <div role="tabpanel" class="tab-pane active" id="exterior">
             <div id="property_image">
               <%= f.fields_for :property_images do |task| %>
-                <%= render 'property_images_fields',f: task, locals: {title: "exterior"} %>
+                <%= render partial:'property_images_fields',locals: {f:task,:@title =>"exterior"} %>
                   <div class="links">
                     <%=  link_to_add_association 'add images', f, :property_images, partial: 'property_images_fields' %>
                   </div>
@@ -88,7 +88,7 @@
             <div role="tabpanel" class="tab-pane" id="livingroom">
               <div id="property_image">
                 <%= f.fields_for :property_images do |task| %>
-                  <%= render 'property_images_fields', f: task %>
+                  <%= render partial:'property_images_fields',locals: {f:task,:@title =>"livingroom"} %>
                     <div class="links">
                       <%=  link_to_add_association 'add images', f, :property_images, partial: 'property_images_fields' %>
                     </div>
