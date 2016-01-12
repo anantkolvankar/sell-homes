@@ -10,6 +10,12 @@ class Property < ActiveRecord::Base
   has_many :flooring_properties
   has_many :flooring, through: :flooring_properties
 
+  has_many :bed_rooms
+  has_many :bath_rooms
+  has_many :balconies
+  # has_one or has_many need to decide for change model
+  has_many :charges
+
   accepts_nested_attributes_for :property_images
   
   belongs_to :location
