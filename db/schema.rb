@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105035302) do
+ActiveRecord::Schema.define(version: 20160116074815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_features", force: :cascade do |t|
+    t.integer  "property_id"
+    t.string   "feature_type"
+    t.string   "feature_val"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "additional_features", ["property_id"], name: "index_additional_features_on_property_id", using: :btree
 
   create_table "agent_infos", force: :cascade do |t|
     t.string   "company"
@@ -41,6 +51,52 @@ ActiveRecord::Schema.define(version: 20160105035302) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "balconies", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "length"
+    t.integer  "breadth"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "balconies", ["property_id"], name: "index_balconies_on_property_id", using: :btree
+
+  create_table "bath_rooms", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "length"
+    t.integer  "breadth"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bath_rooms", ["property_id"], name: "index_bath_rooms_on_property_id", using: :btree
+
+  create_table "bed_rooms", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "length"
+    t.integer  "breadth"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bed_rooms", ["property_id"], name: "index_bed_rooms_on_property_id", using: :btree
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "expected_price"
+    t.string   "price_type"
+    t.boolean  "car_parking"
+    t.boolean  "club_membership"
+    t.integer  "token_amount"
+    t.integer  "others"
+    t.integer  "maintenance"
+    t.string   "maintenance_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "charges", ["property_id"], name: "index_charges_on_property_id", using: :btree
 
   create_table "flooring_properties", force: :cascade do |t|
     t.integer  "flooring_id"
@@ -86,6 +142,9 @@ ActiveRecord::Schema.define(version: 20160105035302) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "location_id"
+    t.string   "furnished_status"
+    t.integer  "floor_no"
+    t.integer  "total_floors"
   end
 
   add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree
@@ -102,6 +161,37 @@ ActiveRecord::Schema.define(version: 20160105035302) do
   create_table "property_types", force: :cascade do |t|
     t.string   "name"
     t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "specifications", force: :cascade do |t|
+    t.string   "super_builtup"
+    t.integer  "super_builtup_unit"
+    t.string   "builtup"
+    t.integer  "builtup_unit"
+    t.string   "carpet"
+    t.integer  "carpet_unit"
+    t.string   "transaction_type"
+    t.string   "possession_status"
+    t.string   "construction_age"
+    t.integer  "property_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "facing"
+    t.integer  "total_lifts"
+    t.integer  "floor_flats_count"
+    t.boolean  "multiple_units"
+    t.string   "water_availabilty"
+    t.string   "electricity_status"
+    t.string   "ownership_status"
+    t.string   "approved_by"
+  end
+
+  add_index "specifications", ["property_id"], name: "index_specifications_on_property_id", using: :btree
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,6 +216,12 @@ ActiveRecord::Schema.define(version: 20160105035302) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "additional_features", "properties"
+  add_foreign_key "balconies", "properties"
+  add_foreign_key "bath_rooms", "properties"
+  add_foreign_key "bed_rooms", "properties"
+  add_foreign_key "charges", "properties"
   add_foreign_key "properties", "property_types"
   add_foreign_key "properties", "users"
+  add_foreign_key "specifications", "properties"
 end
