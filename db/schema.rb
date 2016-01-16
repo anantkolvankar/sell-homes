@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115114724) do
+ActiveRecord::Schema.define(version: 20160116074815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_features", force: :cascade do |t|
+    t.integer  "property_id"
+    t.string   "feature_type"
+    t.string   "feature_val"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "additional_features", ["property_id"], name: "index_additional_features_on_property_id", using: :btree
 
   create_table "agent_infos", force: :cascade do |t|
     t.string   "company"
@@ -132,6 +142,9 @@ ActiveRecord::Schema.define(version: 20160115114724) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "location_id"
+    t.string   "furnished_status"
+    t.integer  "floor_no"
+    t.integer  "total_floors"
   end
 
   add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree
@@ -165,6 +178,14 @@ ActiveRecord::Schema.define(version: 20160115114724) do
     t.integer  "property_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "facing"
+    t.integer  "total_lifts"
+    t.integer  "floor_flats_count"
+    t.boolean  "multiple_units"
+    t.string   "water_availabilty"
+    t.string   "electricity_status"
+    t.string   "ownership_status"
+    t.string   "approved_by"
   end
 
   add_index "specifications", ["property_id"], name: "index_specifications_on_property_id", using: :btree
@@ -195,6 +216,7 @@ ActiveRecord::Schema.define(version: 20160115114724) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "additional_features", "properties"
   add_foreign_key "balconies", "properties"
   add_foreign_key "bath_rooms", "properties"
   add_foreign_key "bed_rooms", "properties"
