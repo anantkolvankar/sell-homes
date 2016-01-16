@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105035302) do
+ActiveRecord::Schema.define(version: 20160115114724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,52 @@ ActiveRecord::Schema.define(version: 20160105035302) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "balconies", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "length"
+    t.integer  "breadth"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "balconies", ["property_id"], name: "index_balconies_on_property_id", using: :btree
+
+  create_table "bath_rooms", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "length"
+    t.integer  "breadth"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bath_rooms", ["property_id"], name: "index_bath_rooms_on_property_id", using: :btree
+
+  create_table "bed_rooms", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "length"
+    t.integer  "breadth"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bed_rooms", ["property_id"], name: "index_bed_rooms_on_property_id", using: :btree
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "expected_price"
+    t.string   "price_type"
+    t.boolean  "car_parking"
+    t.boolean  "club_membership"
+    t.integer  "token_amount"
+    t.integer  "others"
+    t.integer  "maintenance"
+    t.string   "maintenance_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "charges", ["property_id"], name: "index_charges_on_property_id", using: :btree
 
   create_table "flooring_properties", force: :cascade do |t|
     t.integer  "flooring_id"
@@ -106,6 +152,29 @@ ActiveRecord::Schema.define(version: 20160105035302) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "specifications", force: :cascade do |t|
+    t.string   "super_builtup"
+    t.integer  "super_builtup_unit"
+    t.string   "builtup"
+    t.integer  "builtup_unit"
+    t.string   "carpet"
+    t.integer  "carpet_unit"
+    t.string   "transaction_type"
+    t.string   "possession_status"
+    t.string   "construction_age"
+    t.integer  "property_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "specifications", ["property_id"], name: "index_specifications_on_property_id", using: :btree
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -126,6 +195,11 @@ ActiveRecord::Schema.define(version: 20160105035302) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "balconies", "properties"
+  add_foreign_key "bath_rooms", "properties"
+  add_foreign_key "bed_rooms", "properties"
+  add_foreign_key "charges", "properties"
   add_foreign_key "properties", "property_types"
   add_foreign_key "properties", "users"
+  add_foreign_key "specifications", "properties"
 end

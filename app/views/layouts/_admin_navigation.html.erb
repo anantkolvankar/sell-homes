@@ -1,13 +1,9 @@
-<%= menu_group do %>        
 	    
-	            <%= menu_item "Properties", '/properties' %>
-	            <%= menu_item "Type", '/property_types' %>
-	            <%= menu_item "Aminites", '/amenities' %>
-	            <%= menu_item "Flooring", '/floorings' %>
+	            <%= link_to "Properties", '/properties' %> |
+	            <%= link_to "Type", '/property_types' %> |
+	            <%= link_to "Aminites", '/amenities' %> |
+	            <%= link_to "Flooring", '/floorings' %> |
 	        
-	    <% end %>
-	    <%= menu_group pull: :right do %>
+    
+   	            <%= link_to "Admin Log Out",  destroy_admin_session_path, :method => :delete %>
 	        
-   	            <%= menu_item "Admin Log Out",  destroy_admin_session_path, :method => :delete %>
-	        
-	    <% end %>
