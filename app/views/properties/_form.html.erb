@@ -48,6 +48,12 @@
     <%= f.text_field :property_type_id, class: 'form-control' %>
 
   </div>
+  <%= f.simple_fields_for :specification do |s| %>
+    <div class="field">
+      <%= s.label :super_builtup, 'Super Built-up Area' %><br>
+      <%= s.text_field :super_builtup, class: 'form-control' %>
+    </div>
+  <% end %>
   <h3>Select Amenities for property</h3>
 <% for amenity in Amenity.all %>
 <div>

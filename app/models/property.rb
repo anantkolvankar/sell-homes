@@ -15,6 +15,7 @@ class Property < ActiveRecord::Base
   has_many :balconies
   # has_one or has_many need to decide for change model
   has_many :charges
+  has_one :specification
 
   accepts_nested_attributes_for :property_images
   

@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+['Sq-ft', 'Sq-yrd', 'Sq-m', 'Acre', 'Bigha', 'Hectare', 'Marla', 'Kanal', 'Biswa1', 'Biswa2', 'Ground', 'Chatak', 'Kottah', 'Marla', 'Cent', 'Perch', 'Guntha', 'Are'].each do |unit|
+  Unit.find_or_create_by(name: unit)
+end

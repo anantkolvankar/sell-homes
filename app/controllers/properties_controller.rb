@@ -22,6 +22,7 @@ class PropertiesController < ApplicationController
   def new
     @property = Property.new
     @property.property_images.build
+    @specification = @property.build_specification
   end
 
   # GET /propertys/1/edit
