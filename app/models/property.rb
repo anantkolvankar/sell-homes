@@ -19,6 +19,7 @@ class Property < ActiveRecord::Base
   has_one :specification
 
   accepts_nested_attributes_for :property_images
+  accepts_nested_attributes_for :specification
   
   belongs_to :location
 
