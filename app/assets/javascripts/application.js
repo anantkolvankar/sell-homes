@@ -10,10 +10,20 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require modernizr-2.8.1.min
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require cocoon
 //= require gmaps/google
 //= require underscore
+//= require ./common
+//= require common
+//= require jquery.prettyPhoto
+//= require chosen.jquery.min
+//= require infobox.min
+//= require variables
+//= require scripts
+//= require agencies
+//= require owl.carousel.min
 //= require_tree .

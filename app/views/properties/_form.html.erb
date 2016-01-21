@@ -1,3 +1,7 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP-z3jKLB2eYW8HP--uitkNGxLA9u5NLo&libraries=places&callback=initAutocomplete"></script>
+
 <%= form_for @property, html: {class: 'form-style'} do |f| %>
   <% if @property.errors.any? %>
     <div id="error_explanation">
