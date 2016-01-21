@@ -26,4 +26,5 @@
 //= require scripts
 //= require agencies
 //= require owl.carousel.min
+//= require location_autocomplete
 //= require_tree .
