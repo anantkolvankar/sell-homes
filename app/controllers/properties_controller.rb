@@ -23,6 +23,7 @@ class PropertiesController < ApplicationController
     @property = Property.new
     @property.property_images.build
     @specification = @property.build_specification
+    @price = @property.build_charge
   end
 
   # GET /propertys/1/edit
@@ -85,7 +86,8 @@ class PropertiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
       params[:property][:specification_attributes] = params[:property][:specification] if params[:property][:specification]
+      params[:property][:charge_attributes] = params[:property][:charge] if params[:property][:charge]
       # Note :specification removed
-      params.require(:property).permit(:title,:location_name, :description, :price, :pincode, :region, :area, :address, :user_id, :property_type_id,amenity_ids: [],flooring_ids:[] ,property_images_attributes: [:id , :photo, :title,:_destroy], specification_attributes: [:super_builtup, :super_builtup_unit, :builtup, :builtup_unit, :carpet, :carpet_unit, :transaction_type, :possession_status])
+      params.require(:property).permit(:title,:location_name, :description, :price, :pincode, :region, :area, :address, :user_id, :property_type_id,amenity_ids: [],flooring_ids:[] ,property_images_attributes: [:id , :photo, :title,:_destroy], specification_attributes: [:super_builtup, :super_builtup_unit, :builtup, :builtup_unit, :carpet, :carpet_unit, :transaction_type, :possession_status, :construction_age], charge_attributes: [:expected_price, :price_type, :car_parking, :club_membership, :token_amount, :maintenance, :maintenance_type, :others])
     end
 end

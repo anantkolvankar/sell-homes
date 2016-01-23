@@ -54,6 +54,73 @@
     <%= f.text_field :property_type_id, class: 'form-control' %>
 
   </div>
+  <%= f.simple_fields_for :charge do |c| %>
+    <h4>Price & Other Charges</h4>
+    </br>
+    <div class="row">
+      <div class="form-group">
+        <%= c.label :expected_price, 'Expected Price', class: "col-sm-4" %>
+        <div class="col-sm-5">
+          <%= c.text_field :expected_price, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= c.label :price_type, 'Show Price as', class: "col-sm-4" %>
+        <div class="col-sm-8">
+          <label class="checkbox-inline">
+            <%= c.radio_button(:price_type, "amount") %>
+            Amount
+          </label>
+          <label class="checkbox-inline">
+            <%= c.radio_button(:price_type, "negotiable") %>
+            Amount Negotiable
+          </label></br>
+          <label class="checkbox-inline">
+            <%= c.radio_button(:price_type, "onwords") %>
+            Amount Onwords
+          </label>
+          <label class="checkbox-inline">
+            <%= c.radio_button(:price_type, "call") %>
+            Call for price
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= c.label :price_type, 'Price Includes', class: "col-sm-4" %>
+        <div class="col-sm-8">
+          <label class="checkbox-inline">
+            <%= c.check_box(:car_parking) %>
+            Car parking
+          </label>
+          <label class="checkbox-inline">
+            <%= c.check_box(:club_membership) %>
+            Club Membership
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= c.label :token_amount, 'Booking/Token amount', class: "col-sm-4" %>
+        <div class="col-sm-8">
+          <%= c.text_field :token_amount, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= c.label :maintenance, 'Maintenance charges', class: "col-sm-4" %>
+        <div class="col-sm-4">
+          <%= c.text_field :maintenance, class: 'form-control' %>
+        </div>
+        <div class="col-sm-4">
+          <%= c.select(:maintenance_type, [['Monthly', 'monthly'], ['Quarterly', 'quarterly'], ['Yearly', 'yearly'], ['Ont-Time', 'one_time'], ['Per sq unit', 'per_sq_unit']]) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= c.label :others, 'Other charges', class: "col-sm-5" %>
+        <div class="col-sm-7">
+          <%= c.text_field :others, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <%= f.simple_fields_for :specification do |s| %>
     <h4>Area</h4>
     </br>
@@ -103,7 +170,7 @@
         </div>
       </div><br/>
       <div class="form-group">
-        <%= s.label :possession_status, 'Possession Status', class: "col-sm-3" %>
+        <%= s.label :possession_status, 'Possession Status', class: "col-sm-4" %>
         <div class="col-sm-8">
           <label class="checkbox-inline">
             <%= s.radio_button(:possession_status, "under_contruction") %>
@@ -118,7 +185,7 @@
       <div class="form-group">
         <%= s.label :construction_age, 'Age of Construction', class: "col-sm-4" %>
         <div class="col-sm-8">
-          <%= s.select(:construction_age, Unit.all.collect {|u| [u.name, u.id]}) %>
+          <%= s.select(:construction_age, construction_age_collection) %>
         </div>
       </div>
     </div>

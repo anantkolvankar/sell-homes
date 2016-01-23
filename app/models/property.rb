@@ -14,12 +14,13 @@ class Property < ActiveRecord::Base
   has_many :bath_rooms
   has_many :balconies
   # has_one or has_many need to decide for change model
-  has_many :charges
+  has_one :charge
   has_many :additional_features
   has_one :specification
 
   accepts_nested_attributes_for :property_images
   accepts_nested_attributes_for :specification
+  accepts_nested_attributes_for :charge
   
   belongs_to :location
 
