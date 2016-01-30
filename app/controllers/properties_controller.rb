@@ -12,8 +12,8 @@ class PropertiesController < ApplicationController
   # GET /propertys/1.json
   def show
     @hash = Gmaps4rails.build_markers(@property) do |property, marker|
-      marker.lat set_property.location.latitude
-      marker.lng set_property.location.longitude
+      marker.lat set_property.try(:location).try(:latitude)
+      marker.lng set_property.try(:location).try(:longitude)
     end
   end
 
