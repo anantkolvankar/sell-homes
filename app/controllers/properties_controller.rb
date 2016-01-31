@@ -5,7 +5,8 @@ class PropertiesController < ApplicationController
   # GET /propertys
   # GET /propertys.json
   def index
-    @properties =  (current_person== current_admin)? Property.all : Property.where(user:current_person)
+    @properties =  ((current_person== current_admin)? Property.all : Property.where(user:current_person)).paginate(:page => params[:page], :per_page => 3)
+
   end
 
   # GET /propertys/1

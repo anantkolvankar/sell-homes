@@ -105,157 +105,31 @@
                   </div>
                   <div class="info">
                     <h3>
-                      <a href="properties-detail.html"><%= property.title %></a>
+                      <%= link_to property_path(property) do %>
+                       <%= property.title %>
+                      <% end  %>
                       <small><%= property.address%></small>
                     </h3>
                     <p><%= property.description %></p>
                   
                     <ul class="amenities">
-                      <li><i class="icon-area"></i><%= property.specification.super_builtup %> <%= property.specification.super_builtup_unit_name.name %></li>
+                      <li><i class="icon-area"></i><% if(property.specification)%><%= property.specification.super_builtup %><%end%></li>
                       <li><i class="icon-bedrooms"></i> 4</li>
                       <li><i class="icon-bathrooms"></i> 3</li>
                     </ul>
                   </div>
                 </div>
-                
-                <div class="item col-md-4"><!-- Set width to 4 columns for grid view mode only -->
-                  <div class="image">
-                    <a href="properties-detail.html">
-                      <span class="btn btn-default"><i class="fa fa-file-o"></i> Details</span>
-                    </a>
-                    <img src="http://placehold.it/760x670" alt="" />
-                  </div>
-                  <div class="price">
-                    <i class="fa fa-home"></i>For Sale
-                    <span>$1,253,000</span>
-                  </div>
-                  <div class="info">
-                    <h3>
-                      <a href="properties-detail.html">Stunning Villa with 5 bedrooms</a>
-                      <small>Miami Beach, Florida</small>
-                    </h3>
-                    <p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen.</p>
-                  
-                    <ul class="amenities">
-                      <li><i class="icon-area"></i> 3470 Sq Ft</li>
-                      <li><i class="icon-bedrooms"></i> 5</li>
-                      <li><i class="icon-bathrooms"></i> 4</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="item col-md-4"><!-- Set width to 4 columns for grid view mode only -->
-                  <div class="image">
-                    <a href="properties-detail.html">
-                      <span class="btn btn-default"><i class="fa fa-file-o"></i> Details</span>
-                    </a>
-                    <img src="http://placehold.it/760x670" alt="" />
-                  </div>
-                  <div class="price">
-                    <i class="fa fa-home"></i>For Sale
-                    <span>$560,000</span>
-                  </div>
-                  <div class="info">
-                    <h3>
-                      <a href="properties-detail.html">Recent construction with 3 bedrooms</a>
-                      <small>Park Slope, New York</small>
-                    </h3>
-                    <p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen.</p>
-                  
-                    <ul class="amenities">
-                      <li><i class="icon-area"></i> 1800 Sq Ft</li>
-                      <li><i class="icon-bedrooms"></i> 3</li>
-                      <li><i class="icon-bathrooms"></i> 2</li>
-                    </ul>
-                  </div>
-                </div>
               </div>
               
-              <div class="row">
-                <div class="item col-md-4"><!-- Set width to 4 columns for grid view mode only -->
-                  <div class="image">
-                    <a href="properties-detail.html">
-                      <span class="btn btn-default"><i class="fa fa-file-o"></i> Details</span>
-                    </a>
-                    <img src="http://placehold.it/760x670" alt="" />
-                  </div>
-                  <div class="price">
-                    <i class="fa fa-home"></i>For Rent
-                    <span>$850</span>
-                  </div>
-                  <div class="info">
-                    <h3>
-                      <a href="properties-detail.html">Modern construction with parking space</a>
-                      <small>Midtown, New York</small>
-                    </h3>
-                    <p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen.</p>
-                  
-                    <ul class="amenities">
-                      <li><i class="icon-area"></i> 1300 Sq Ft</li>
-                      <li><i class="icon-bedrooms"></i> 1</li>
-                      <li><i class="icon-bathrooms"></i> 2</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="item col-md-4"><!-- Set width to 4 columns for grid view mode only -->
-                  <div class="image">
-                    <a href="properties-detail.html">
-                      <span class="btn btn-default"><i class="fa fa-file-o"></i> Details</span>
-                    </a>
-                    <img src="http://placehold.it/760x670" alt="" />
-                  </div>
-                  <div class="price">
-                    <i class="fa fa-home"></i>For Sale
-                    <span>$846,000</span>
-                  </div>
-                  <div class="info">
-                    <h3>
-                      <a href="properties-detail.html">Single Family Townhouse</a>
-                      <small>Cobble Hill, New York</small>
-                    </h3>
-                    <p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen.</p>
-                  
-                    <ul class="amenities">
-                      <li><i class="icon-area"></i> 1580 Sq Ft</li>
-                      <li><i class="icon-bedrooms"></i> 2</li>
-                      <li><i class="icon-bathrooms"></i> 2</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="item col-md-4"><!-- Set width to 4 columns for grid view mode only -->
-                  <div class="image">
-                    <a href="properties-detail.html">
-                      <span class="btn btn-default"><i class="fa fa-file-o"></i> Details</span>
-                    </a>
-                    <img src="http://placehold.it/760x670" alt="" />
-                  </div>
-                  <div class="price">
-                    <i class="fa fa-home"></i>For Rent
-                    <span>$1,500</span>
-                  </div>
-                  <div class="info">
-                    <h3>
-                      <a href="properties-detail.html">3 bedroom villa with garage for rent</a>
-                      <small>Bal Harbour, Florida</small>
-                    </h3>
-                    <p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen.</p>
-                  
-                    <ul class="amenities">
-                      <li><i class="icon-area"></i> 2000 Sq Ft</li>
-                      <li><i class="icon-bedrooms"></i> 3</li>
-                      <li><i class="icon-bathrooms"></i> 2</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
             <% end  %>
             <!-- END PROPERTY LISTING -->
-            
-            
+            <div class="digg_pagination">
+
+              <%= will_paginate @properties %>
+            </div>
             <!-- BEGIN PAGINATION -->
+           <!--
             <div class="pagination">
               <ul id="previous">
                 <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
@@ -270,6 +144,7 @@
                 <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
               </ul>
             </div>
+            -->
             <!-- END PAGINATION -->
             
           </div>  

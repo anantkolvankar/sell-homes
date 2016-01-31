@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'haml'
-
+gem 'will_paginate', '~> 3.0.6'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'therubyracer'

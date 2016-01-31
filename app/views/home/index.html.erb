@@ -69,10 +69,10 @@
 								<%#= link_to property.title, property %>
 								<div class="item" data-animation-direction="from-bottom" data-animation-delay="250">
 								<div class="image">
-									<a href="#" class="info">
-										<h3><%= property.title%></h3>
-										<span class="location">Upper East Side, New York</span>
-									</a>
+							    <%= link_to property_path(property),{:class=>'info'} do %>
+    								<h3><%= property.title%></h3>
+    								<span class="location">Upper East Side, New York</span>
+								<% end %>
 									<img src="http://placehold.it/760x670" alt="" />
 								</div>
 								<div class="price">

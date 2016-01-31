@@ -37,7 +37,7 @@
         <div class="property-topinfo">
           <ul class="amenities">
             <li><i class="icon-apartment"></i> <%= @property.property_type.name %></li>
-            <li><i class="icon-area"></i><%= @property.specification.super_builtup %> <%= @property.specification.super_builtup_unit_name.name %></li>
+            <li><i class="icon-area"></i><% if(@property.specification)%><%= @property.specification.super_builtup %> <%= @property.specification.super_builtup_unit_name.name %><%end%></li>
             <li><i class="icon-bedrooms"></i> 4</li>
             <li><i class="icon-bathrooms"></i> 3</li>
           </ul>
@@ -50,7 +50,7 @@
           
           <div class="price">
             <i class="fa fa-home"></i>For Sale
-            <span>Rs <%= @property.charge.expected_price %></span>
+            <span>Rs <%= @property.price %></span>
           </div>
               
           <!-- BEGIN PROPERTY DETAIL LARGE IMAGE SLIDER -->
