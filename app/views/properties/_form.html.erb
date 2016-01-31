@@ -49,7 +49,8 @@
   </div>
   <div class="field">
     <%= f.label :property_type_id %><br>
-    <%= f.text_field :property_type_id, class: 'form-control' %>
+    <%= select_tag "property[property_type_id]", options_for_select(PropertyType.all.collect {|u| [ u.name, u.id ] })%>
+
 
   </div>
   <%= f.simple_fields_for :charge do |c| %>

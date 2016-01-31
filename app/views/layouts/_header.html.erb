@@ -15,8 +15,9 @@
               							 <li><%= link_to "Register",  home_register_as_path,class:"fa fa-pencil-square-o" %></li>
 <% end %>
   							<% if current_agent %>
+             						<li><%= link_to " Add property",  new_property_path,class:"fa fa-plus" %></li>
 
-             						<li><%= link_to "My properties",  properties_path,class:"fa fa-sign-in" %></li>
+             						<li><%= link_to " My properties",  properties_path,class:"fa fa-list" %></li>
               							 <li><%= link_to "Agent edit",  edit_agent_registration_path,class:"fa fa-pencil-square-o" %></li>
               							 <li><%= link_to "Agent Log Out",  destroy_agent_session_path, :method => :delete,class:"fa fa-pencil-square-o" %></li>
  							<% end %>
