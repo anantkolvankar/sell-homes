@@ -126,7 +126,7 @@
             <!-- END PROPERTY LISTING -->
             <div class="digg_pagination">
 
-              <%= will_paginate @properties %>
+              <%= will_paginate(@properties, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
             </div>
             <!-- BEGIN PAGINATION -->
            <!--
